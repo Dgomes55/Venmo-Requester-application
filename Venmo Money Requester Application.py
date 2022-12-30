@@ -1,22 +1,31 @@
 
 #import libraries
 import datetime as dt
+import venmo_api
+from venmo_api import Client
 
+#ask for user input of username and password
+venmo_usrname = input("Please input your user name: ")
+venmo_psword = input("Please input your password: ")
 
+#Authentication for venmo client (to access your venmo account)
+access_token = Client.get_access_token(username= venmo_usrname, password= venmo_psword)
+#Print access token so you know what to impup later
+print("My token:", access_token)
 #initalizing variables
+
 balance = float(0.00)
 requestmny = 0
 x = dt.datetime.now()
 todayinp = input("Please enter the current date: ")
 today = int(todayinp)
 i = 1
-#x.strftime("%d")
+
+
 #Gather user input
 
 #String variables
 str_bankmsg = "Your Bank Transfer has iniciated for amount $ "
-
-
 
 #if loop to get the amount of user to request money from and the amount to request from them
 if today == 31:
