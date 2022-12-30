@@ -2,7 +2,6 @@
 
 # Venmo API Documentation link (https://github.com/mmohades/Venmo)
 
-
 #import libraries
 import datetime as dt
 import venmo_api
