@@ -3,6 +3,7 @@
 # Venmo API Documentation link (https://github.com/mmohades/Venmo)
 
 #import libraries
+import configparser
 import datetime as dt
 import venmo_api
 from venmo_api import Client
@@ -11,7 +12,7 @@ from venmo_api import Client
 def get_api_key():
     config = configparser.ConfigParser()
     config.read('config.ini')
-    return config['api']
+    return config['venmo_api']['api']
 
 API_PRIV_KEY = get_api_key()
 
