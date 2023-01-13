@@ -7,6 +7,14 @@ import datetime as dt
 import venmo_api
 from venmo_api import Client
 
+#Grab Api key from config file
+def get_api_key():
+    config = configparser.ConfigParser()
+    config.read('config.ini')
+    return config['api']
+
+API_PRIV_KEY = get_api_key()
+
 #ask for user input of username and password
 venmo_usrname = input("Please input your user name: ")
 venmo_psword = input("Please input your password: ")
@@ -15,8 +23,11 @@ venmo_psword = input("Please input your password: ")
 access_token = Client.get_access_token(username= venmo_usrname, password= venmo_psword)
 #Print access token so you know what to impup later
 print("My token:", access_token)
-#initalizing variables
 
+#Initalize the venmo api
+client_test = Client(API_PRIV_KEY = API_PRIV_KEY)
+
+#initalizing variables
 balance = float(0.00)
 requestmny = 0
 x = dt.datetime.now()
