@@ -1,4 +1,7 @@
-#Venmo Money Requester Application by Dylan Gomes
+#Venmo Money Requester Application by Dylan Gomes (This is my first python personal project)
+#This application is made to help automate the monthly request of the phone bill from my family, we all share a plan
+#so instead of having to request money one by one each month this application will make the task much more simple by allowing
+#the process to be automated
 
 # Venmo API Documentation link (https://github.com/mmohades/Venmo)
 
@@ -15,15 +18,6 @@ def get_api_key():
     return config['venmo_api']['api']
 
 API_PRIV_KEY = get_api_key()
-
-#ask for user input of username and password
-venmo_usrname = input("Please input your user name: ")
-venmo_psword = input("Please input your password: ")
-
-#Authentication for venmo client (to access your venmo account)
-access_token = Client.get_access_token(username= venmo_usrname, password= venmo_psword)
-#Print access token so you know what to impup later
-print("My token:", access_token)
 
 #Initalize the venmo api
 client_test = Client(API_PRIV_KEY = API_PRIV_KEY)
@@ -50,6 +44,8 @@ if today == 31:
         usrname = input("Please enter the user name of the user you want to request money from: ")
         reqamt = input("Please enter the amount you would like to request from the user: $ ")
         testamt= float(reqamt)
+        #This is when the api sends the request per the specifications provided by the user
+        Client.payment.request_money(reqamt, "Test", "0000000000000000000")
         str_Rqtmsg = "Your Request for $" + str(reqamt) + " was sent to " + str(usrname)
         print(str_Rqtmsg)
         balance += testamt
