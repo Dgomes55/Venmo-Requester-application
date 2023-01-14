@@ -33,9 +33,6 @@ todayinp = input("Please enter the current date: ")
 today = int(todayinp)
 i = 1
 
-
-#Gather user input
-
 #String variables
 str_bankmsg = "Your Bank Transfer has iniciated for amount $ "
 
@@ -44,11 +41,12 @@ if today == 31:
     requsramtinp = input("Enter the amount of users you would like to send request to: ")
     requsramt = int(requsramtinp)
     while requsramt >= i:
-        usrname = input("Please enter the user name of the user you want to request money from: ")
+        usrname = input("Please enter the user ID of the user you want to request money from: ")
         reqamt = input("Please enter the amount you would like to request from the user: $ ")
+        reqnote = input("Please enter the note along with this transaction: ")
         testamt= float(reqamt)
         #This is when the api sends the request per the specifications provided by the user
-        client.payment.request_money(amount=32.5, note="Test", target_user_id="2773605356142592010")
+        client.payment.request_money(amount=testamt, note=reqnote, target_user_id=usrname)
         str_Rqtmsg = "Your Request for $" + str(reqamt) + " was sent to " + str(usrname)
         print(str_Rqtmsg)
         balance += testamt
