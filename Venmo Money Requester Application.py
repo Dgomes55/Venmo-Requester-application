@@ -53,6 +53,3 @@ if today == 31:
         i += 1       
 else:
     print("It is currently the incorrect date to request the phone bill: ")
-
-#This key is to log out of the venmo Api
-#client.log_out(get_api_key())
