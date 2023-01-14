@@ -22,9 +22,8 @@ API_PRIV_KEY = get_api_key()
 #Initalize the venmo api
 client = Client(get_api_key())
 
-users = client.user.search_for_users(query="MattGomes9878")
-for user in users:
-    print(user.username)
+#Use this to grab user IDS
+print(client.user.get_user_by_username("MattGomes9878"))
 
 #initalizing variables
 balance = float(0.00)
@@ -49,7 +48,7 @@ if today == 31:
         reqamt = input("Please enter the amount you would like to request from the user: $ ")
         testamt= float(reqamt)
         #This is when the api sends the request per the specifications provided by the user
-        client.payment.request_money(amount=32.5, note="Test", target_user = "")
+        client.payment.request_money(amount=32.5, note="Test", target_user_id="2773605356142592010")
         str_Rqtmsg = "Your Request for $" + str(reqamt) + " was sent to " + str(usrname)
         print(str_Rqtmsg)
         balance += testamt
