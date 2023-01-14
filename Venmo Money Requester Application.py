@@ -8,8 +8,8 @@
 #import libraries
 import configparser
 import datetime as dt
-import venmo_api
-from venmo_api import Client
+import venmo_api as venmo
+from venmo_api import *
 
 #Grab Api key from config file
 def get_api_key():
@@ -20,7 +20,11 @@ def get_api_key():
 API_PRIV_KEY = get_api_key()
 
 #Initalize the venmo api
-client_test = Client(API_PRIV_KEY = API_PRIV_KEY)
+client = Client(get_api_key())
+
+users = client.user.search_for_users(query="MattGomes9878")
+for user in users:
+    print(user.username)
 
 #initalizing variables
 balance = float(0.00)
@@ -45,10 +49,13 @@ if today == 31:
         reqamt = input("Please enter the amount you would like to request from the user: $ ")
         testamt= float(reqamt)
         #This is when the api sends the request per the specifications provided by the user
-        Client.payment.request_money(reqamt, "Test", "0000000000000000000")
+        client.payment.request_money(amount=32.5, note="Test", target_user = "")
         str_Rqtmsg = "Your Request for $" + str(reqamt) + " was sent to " + str(usrname)
         print(str_Rqtmsg)
         balance += testamt
         i += 1       
 else:
     print("It is currently the incorrect date to request the phone bill: ")
+
+#This key is to log out of the venmo Api
+#client.log_out(get_api_key())
