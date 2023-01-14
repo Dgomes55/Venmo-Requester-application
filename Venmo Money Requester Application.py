@@ -50,6 +50,7 @@ if today == 31:
         str_Rqtmsg = "Your Request for $" + str(reqamt) + " was sent to " + str(usrname)
         print(str_Rqtmsg)
         balance += testamt
+        print("Your Total Amount Requested is: "+ balance)
         i += 1       
 else:
     print("It is currently the incorrect date to request the phone bill: ")
