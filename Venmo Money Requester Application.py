@@ -17,13 +17,11 @@ def get_api_key():
     config.read('config.ini')
     return config['venmo_api']['api']
 
-API_PRIV_KEY = get_api_key()
-
 #Initalize the venmo api
 client = Client(get_api_key())
 
 #Use this to grab user IDS
-print(client.user.get_user_by_username("MattGomes9878"))
+print(client.user.get_user_by_username(""))
 
 #initalizing variables
 balance = float(0.00)
